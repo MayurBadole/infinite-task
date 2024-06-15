@@ -1,0 +1,73 @@
+.weather-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.current-weather {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.current-weather h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.current-weather p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.temperature {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+}
+.temperature span {
+  font-size: 38px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.temperature p {
+  margin-top: 17px;
+}
+
+.chart-container {
+  margin: 20px 0;
+}
+
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.forecast-day {
+  text-align: center;
+  min-width: 80px;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.forecast-day p {
+  margin: 5px 0;
+}
+
+.forecast-day img {
+  width: 40px;
+  height: 40px;
+}
+
+.no-data-found {
+  color: red;
+  text-align: center;
+}

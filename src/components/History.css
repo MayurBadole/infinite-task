@@ -1,0 +1,39 @@
+.weather-containerHis {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.back-button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.weather-itemHis {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.weather-itemHis div {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+ width: 24px;}
+
+.icon:last-child {
+  margin-right: 0;
+}
