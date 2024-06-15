@@ -23,6 +23,7 @@ import brokencloudsImg from "./Assets/04d@2x.png";
 import scatteredcloudsImg from "./Assets/03d@2x.png";
 import clearImg1 from "./Assets/01d@2x.png";
 import clearImg2 from "./Assets/01n@2x.png";
+import "chart.js/auto";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -47,14 +48,17 @@ const WeatherData = () => {
   };
 
   const data = {
-    labels: ["11am", "2pm", "5pm", "8pm", "11pm", "2am", "5am", "8am"],
+    labels: weatherData?.list?.map((data) => {
+      return [convertTo12HourFormat(data.dt_txt)];
+    }),
     datasets: [
       {
         label: "Temperature (°C)",
-        data: [35, 35, 27, 29, 29, 31, 28, 28],
+        data: weatherData?.list?.map((data) => {
+          return data.main.temp;
+        }),
         fill: true,
-        backgroundColor: "rgba(173, 216, 230, 0.5)",
-        borderColor: "rgba(0, 0, 255, 1)",
+        backgroundColor: "rgb(193, 206, 227)",
         tension: 0.4,
       },
     ],
@@ -63,6 +67,7 @@ const WeatherData = () => {
   const options = {
     scales: {
       y: {
+        display:false,
         beginAtZero: false,
         min: 25,
         max: 40,
@@ -90,6 +95,7 @@ const WeatherData = () => {
       },
     },
   };
+  
   let weatherIcon;
   switch (weatherData?.list?.[0]?.weather?.[0]?.icon) {
     case "01d":
@@ -172,6 +178,7 @@ const WeatherData = () => {
 
   const tempData = weatherData?.list?.[0]?.main?.temp || "N/A";
   const weatherDatailts = weatherData?.list?.[0]?.weather?.[0]?.main || "N/A";
+  const forecastData = weatherData?.list;
 
   const days = [
     "Friday",
@@ -197,7 +204,17 @@ const WeatherData = () => {
     return `${day}, ${hourIn12HrFormat}:${formattedMinutes} ${ampm}`;
   };
 
-  const forecastData = weatherData?.list;
+  function convertTo12HourFormat(dt_txt) {
+    const formatTime = (dateTimeString) => {
+      const date = new Date(dateTimeString);
+      const options = { hour: "numeric", hour12: true };
+      return date.toLocaleString("en-US", options);
+    };
+
+    const formattedTime = formatTime(dt_txt);
+
+    return formattedTime;
+  }
   return (
     <>
       <SearchFeild
